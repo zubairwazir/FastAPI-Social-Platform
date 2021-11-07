@@ -1,0 +1,6 @@
+
+*.pyc
+*.code-workspace
+*.crt
+*.key
+*.pem

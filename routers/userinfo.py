@@ -96,10 +96,11 @@ async def new_token(user: ValidateToken):
 
 
 @router.post("/updateinfo")
-async def update_info(user: UserModel, Depends = validate_token_dependency):
+async def update_info(user: UserModel):
+# async def update_info(user: UserModel, Depends=validate_token_dependency):
     # TODO this only generates a new token, we should have the ability to change the token
     #  if the token is every compromised.
-
+    print("Testig")
     res = await validate_firebase_token(user.token)
     data = res.json()
 
@@ -110,7 +111,8 @@ async def update_info(user: UserModel, Depends = validate_token_dependency):
             await main_db_instance.execute(query_statement)
             return {"success": True}
 
-        except:
+        except Exception as exp:
+            logging.exception(f'{exp}')
             return JSONResponse({"success": False, "message": "Error saving data."}, status_code=500)
 
     else:
@@ -119,7 +121,8 @@ async def update_info(user: UserModel, Depends = validate_token_dependency):
 
 
 @router.post("/getuserinfo")
-async def get_user_info(user: ValidateToken, Depends = validate_token_dependency):
+async def get_user_info(user: ValidateToken):
+#async def get_user_info(user: ValidateToken, Depends=validate_token_dependency):
     # TODO this only generates a new token, we should have the ability to change the token
     #  if the token is every comprimised.
     logger.info("we are in the getuser info endpoint")

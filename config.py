@@ -16,7 +16,7 @@ class Config(BaseSettings):
     postgres_log_db_name: str
     redis_server: str
     firebase_api_key: str
-    jwt_key: str
+    # jwt_key: str
     rock_url: str
     rock_api_key: str
 

@@ -122,7 +122,7 @@ async def update_info(user: UserModel):
 
 @router.post("/getuserinfo")
 async def get_user_info(user: ValidateToken):
-#async def get_user_info(user: ValidateToken, Depends=validate_token_dependency):
+async def get_user_info(user: ValidateToken, Depends=validate_token_dependency):
     # TODO this only generates a new token, we should have the ability to change the token
     #  if the token is every comprimised.
     logger.info("we are in the getuser info endpoint")

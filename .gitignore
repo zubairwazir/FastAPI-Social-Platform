@@ -4,3 +4,6 @@
 *.crt
 *.key
 *.pem
+
+venv
+task_scheduler/sonar-scanner.properties
